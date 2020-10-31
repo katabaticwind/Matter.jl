@@ -48,6 +48,7 @@ function div!(v::Vector, scalar)
 end
 
 magnitude(v::Vector) = sqrt(v.x * v.x + v.y * v.y)
+angle(v::Vector) = atan(v.y / v.x)
 
 function normalize!(v::Vector)
     m = magnitude(v)
@@ -57,6 +58,18 @@ function normalize!(v::Vector)
     else
         v.x /= m
         v.y /= m
+    end
+    return v
+end
+
+function set_magnitude(v::Vector, scalar)
+    v = mult!(normalize!(v), scalar)
+    return v
+end
+
+function limit(v::Vector, scalar)
+    if (magnitude(v) > scalar)
+        v = set_magnitude(v, scalar)
     end
     return v
 end
