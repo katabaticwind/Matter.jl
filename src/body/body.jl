@@ -1,5 +1,6 @@
 mutable struct Body
     vertices
+    bounds
 
     position
     velocity
@@ -16,6 +17,8 @@ mutable struct Body
     mass
     inertia
 end
+# TODO Body Constructor
+
 
 """
     translate!(body::Body, translation::Vector)
